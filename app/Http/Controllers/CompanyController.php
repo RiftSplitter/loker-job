@@ -13,4 +13,6 @@ class CompanyController extends Controller
 
     	return view('users.home')->with(['companies' => $companies]);
     }
+
+ 
 }
