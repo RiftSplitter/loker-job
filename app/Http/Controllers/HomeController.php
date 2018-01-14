@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
      * Show the application dashboard.
      *
@@ -24,6 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(Auth::user()->role == 'user') {
+            return redirect('/user');
+        }
+        else if (Auth::user()->role == 'company') {
+            return redirect('/company');
+        }
     }
 }

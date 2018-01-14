@@ -21,6 +21,15 @@ Route::get('/', function() {
 
 Route::group(['middleware' => 'auth'], function() {
 
-	Route::get('/home', 'CompanyController@index');
+	Route::get('/home', 'HomeController@index');
+
+	Route::get('/user', 'CompanyController@index');
 	Route::get('/view_company_detail/{id}', 'JobController@view');
+	Route::get('/show_register_company', 'CompanyController@viewRegister');
+	Route::post('/register_company', 'CompanyController@register');
+
+	Route::get('/company', 'CompanyController@indexCompany');
+	Route::get('/show_insert_job', 'JobController@viewInsertJob');
+	Route::post('/insert_job', 'JobController@insert');
+
 });

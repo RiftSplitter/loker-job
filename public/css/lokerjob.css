@@ -1,3 +1,7 @@
+body{
+	background-image: url("/images/background-building.png");
+}
+
 .btn{
 	margin-left: 2px;
 }
@@ -11,3 +15,7 @@
 	padding: 2px;
 }
 
+.list-group-item a{
+	text-decoration: none;
+	color: inherit;
+}
