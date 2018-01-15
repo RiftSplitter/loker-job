@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class CompanyMiddleware
@@ -15,6 +16,10 @@ class CompanyMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()->role != 'company') {
+            return redirect()->back();
+        }
+
         return $next($request);
     }
 }

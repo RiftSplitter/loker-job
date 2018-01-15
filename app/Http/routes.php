@@ -21,15 +21,21 @@ Route::get('/', function() {
 
 Route::group(['middleware' => 'auth'], function() {
 
+	//this route will redirect to user group or company based on the role of the currently authenticated user
 	Route::get('/home', 'HomeController@index');
 
-	Route::get('/user', 'CompanyController@index');
-	Route::get('/view_company_detail/{id}', 'JobController@view');
-	Route::get('/show_register_company', 'CompanyController@viewRegister');
-	Route::post('/register_company', 'CompanyController@register');
+	//user routes
+	Route::group(['middleware' => 'user'], function() {
+		Route::get('/user', 'CompanyController@index');
+		Route::get('/view_company_detail/{id}', 'JobController@view');
+		Route::get('/show_register_company', 'CompanyController@viewRegister');
+		Route::post('/register_company', 'CompanyController@register');
+	});
 
-	Route::get('/company', 'CompanyController@indexCompany');
-	Route::get('/show_insert_job', 'JobController@viewInsertJob');
-	Route::post('/insert_job', 'JobController@insert');
-
+	//company routes
+	Route::group(['middleware' => 'company'], function() {
+		Route::get('/company', 'CompanyController@indexCompany');
+		Route::get('/show_insert_job', 'JobController@viewInsertJob');
+		Route::post('/insert_job', 'JobController@insert');
+	});
 });

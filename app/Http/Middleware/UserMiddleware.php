@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class UserMiddleware
@@ -15,6 +16,10 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()->role != 'user') {
+            return redirect()->back();
+        }
+
         return $next($request);
     }
 }

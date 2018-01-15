@@ -36,7 +36,7 @@ class JobController extends Controller
     	
 
     	$job->save();
-
+            
     	return redirect('/home');
     }
 }
