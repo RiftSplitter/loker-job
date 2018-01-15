@@ -22,14 +22,14 @@ class JobController extends Controller
     }
 
     public function viewInsertJob() {
-    	$company = Auth::user()->company->first();
+    	$company = Auth::user()->company;
 
     	return view('company.insert_job')->with(['company' => $company]);
     }
 
     public function insert(Request $request) {
     	$job = new Job();
-    	$company = Auth::user()->company->first();
+    	$company = Auth::user()->company;
 
     	$job->job_name = $request->job_name;
     	$job->company_id = $company->company_id;

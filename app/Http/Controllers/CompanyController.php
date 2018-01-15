@@ -16,8 +16,8 @@ class CompanyController extends Controller
     }
 
     public function indexCompany() {
-    	$company = Auth::user()->company->first();
- 
+    	$company = Auth::user()->company;
+            
     	$job = $company->job;
     	
 

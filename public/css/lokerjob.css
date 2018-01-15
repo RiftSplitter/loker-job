@@ -1,5 +1,6 @@
 body{
-	background-image: url("/images/background-building.png");
+	background-image: url("/images/bg-building.jpg");
+	background-repeat: no-repeat;
 }
 
 .btn{
